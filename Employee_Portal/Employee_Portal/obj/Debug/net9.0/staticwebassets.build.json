@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "N+alhHPYtTtmM8zLeXZQTjoGNm0NuJxMVsG1zbQQNpk=",
+  "Source": "Employee_Portal",
+  "BasePath": "_content/Employee_Portal",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
