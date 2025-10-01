@@ -1,0 +1,20 @@
+<div class="app-login-form">
+    <!-- <app-snackbar [errorMessage]="errorMessage" *ngIf="errorMessage"></app-snackbar> -->
+    <h2> {{ isLoginMode ? "Login" : "Register"}} Here</h2>
+    <form (ngSubmit)="submitDetails(loginForm)" #loginForm="ngForm">
+        <div class="form-input">
+            <label>User Name</label>
+<input type="text" placeholder="Please Enter your UserName" name="userName" ngModel required>
+        </div>
+        <div class="form-input">
+            <label>Password</label>
+            <input type="password" placeholder="Password" name="password"  ngModel required minlength="8">
+        </div>           
+        <button type="submit" class="app-login-btn">{{isLoginMode? "Login" :"Register"}}</button>
+        <p>
+            {{ isLoginMode ? "Do not have an accout yet?":"Already have Account?"}}
+            <button class="app-toggle-btn"  (click)="switchMode()" type="button">{{ isLoginMode ? "Register" : "Login"}}</button>
+        </p>
+    </form>
+</div>
+  <!-- <app-loader *ngIf="isLoading"></app-loader> -->

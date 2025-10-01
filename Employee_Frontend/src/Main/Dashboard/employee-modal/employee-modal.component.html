@@ -1,0 +1,127 @@
+<div class="modal fade" #employeeModal tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-4">
+
+      <!-- Header -->
+      <div class="modal-header bg-primary text-white rounded-top-4">
+        <h5 class="modal-title fw-bold">
+          <i class="bi bi-person-badge me-2"></i>
+          {{ isEdit ? 'Edit Employee' : 'Create New Employee' }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body bg-light">
+        <form [formGroup]="employeeForm" class="row g-4">
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Full Name</label>
+            <input type="text" class="form-control form-control-lg rounded-3 shadow-sm"
+                   formControlName="fullName" placeholder="Enter full name" required>
+                       <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('fullName') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" class="form-control form-control-lg rounded-3 shadow-sm"
+                   formControlName="email" placeholder="Enter email address">
+                   <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('email') }"></ng-container>
+          </div>
+
+          
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Department</label>
+             <select class="form-select form-select-lg rounded-3 shadow-sm" formControlName="department">
+    <option value="" disabled selected>Select department</option>
+    <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+  </select>
+  <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('department') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Position</label>
+            <input type="text" class="form-control form-control-lg rounded-3 shadow-sm"
+                   formControlName="position" placeholder="Enter position">
+                       <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('position') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Hire Date</label>
+            <input type="date" class="form-control form-control-lg rounded-3 shadow-sm"
+                   formControlName="hireDate">
+                       <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('hireDate') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Date of Birth</label>
+            <input type="date" class="form-control form-control-lg rounded-3 shadow-sm"
+                   formControlName="dob">
+                   <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('dob') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Employee Type</label>
+            <select class="form-select form-select-lg rounded-3 shadow-sm" formControlName="employeeType">
+              <option value="">-- Select Type --</option>
+              <option value="Permanent">Permanent</option>
+              <option value="Contract">Contract</option>
+              <option value="Temporary">Temporary</option>
+            </select>
+             <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('employeeType') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Gender</label>
+            <select class="form-select form-select-lg rounded-3 shadow-sm" formControlName="gender">
+              <option value="">-- Select Gender --</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+                <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('gender') }"></ng-container>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Salary</label>
+            <input type="number" class="form-control form-control-lg rounded-3 shadow-sm"
+                  formControlName="salary" placeholder="Enter salary">
+              <ng-container *ngTemplateOutlet="error; context: { $implicit: employeeForm.get('salary') }"></ng-container>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer bg-light rounded-bottom-4">
+        <button type="button" class="btn btn-outline-secondary px-4 rounded-pill"
+                data-bs-dismiss="modal">
+          <i class="bi bi-x-circle me-1"></i> Cancel
+        </button>
+        <button type="button" class="btn btn-primary px-4 rounded-pill shadow"
+                (click)="save()" [disabled]="employeeForm.invalid">
+          <i class="bi bi-save me-1"></i> Save
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #error let-control>
+  <div *ngIf="control?.invalid && (control.dirty || control.touched)" 
+      class="text-danger small mt-1">
+    <div *ngIf="control.errors?.['required']">This field is required.</div>
+    <div *ngIf="control.errors?.['email']">Invalid email format.</div>
+    <div *ngIf="control.errors?.['minlength']">
+      Minimum length is {{ control.errors?.['minlength'].requiredLength }} characters.
+    </div>
+    <div *ngIf="control.errors?.['min']">
+      Value must be at least {{ control.errors?.['min'].min }}.
+    </div>
+  </div>
+</ng-template>
+
+
+

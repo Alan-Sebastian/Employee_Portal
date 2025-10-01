@@ -1,0 +1,10 @@
+<div class="app-header">
+    <div class="app-header-logo">
+        <h2>Employee Portal</h2>
+    </div>
+    <div class="app-header-navbar">
+        <a routerLink="/layout/home" *ngIf="!isLoggedIn()">HOME</a>
+        <a routerLink="/login" *ngIf="!isLoggedIn()">LOGIN</a>
+        <a href="#" *ngIf="isLoggedIn()" (click)="logout()">LOGOUT</a>
+    </div>
+</div>

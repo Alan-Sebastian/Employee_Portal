@@ -1,0 +1,55 @@
+/* Apply a modern font across the app */
+body {
+  font-family: 'Segoe UI', Roboto, 'Open Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styling */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000000; /* solid black */
+  padding: 15px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Logo/Title */
+.app-header-logo h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Roboto, 'Open Sans', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Optional logo icon */
+.app-header-logo h2::before {
+  content: "👥";
+  font-size: 1.4rem;
+}
+
+/* Navbar links */
+.app-header-navbar a {
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', Roboto, 'Open Sans', Arial, sans-serif;
+  color: #f8f9fa;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.app-header-navbar a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffdd57;
+}
